@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import contactsAction from '../redux/contacts/contactsActions'
+import contactsAction from '../../redux/contacts/contactsActions'
 import styles from './ContactForm.module.css'
 
 class ContactForm extends Component{

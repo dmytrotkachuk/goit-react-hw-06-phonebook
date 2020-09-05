@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import contactsActions from '../redux/contacts/contactsActions'
+import PropTypes from 'prop-types';
+import contactsActions from '../../redux/contacts/contactsActions'
 import styles from './Filter.module.css'
 
 const Filter = ({value, onChangeFilter}) =>(
@@ -8,7 +9,7 @@ const Filter = ({value, onChangeFilter}) =>(
     <label className={styles.filterName} htmlFor='filter'>Find contacts by name</label>
     <input
     className={styles.filterField}
-    // type='text'
+    type='text'
     value={value}
     onChange={e=> onChangeFilter(e.target.value)}
     id='filter'/>
@@ -24,3 +25,9 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+
+
+Filter.propTypes = {
+    value: PropTypes.string.isRequired,
+    onChangeFilter: PropTypes.func
+}

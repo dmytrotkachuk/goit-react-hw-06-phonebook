@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from './Layout'
-import Appbar from './Appbar'
-import ContactForm from './ContactForm'
-import ContactList from './ContactList'
-import Filter from './Filter'
+import Layout from './Layout/Layout'
+import Appbar from './Appbar/Appbar'
+import ContactForm from './ContactForm/ContactForm'
+import ContactList from './ContactList/ContactList'
+import Filter from './Filter/Filter'
 
 function App() {
   return (

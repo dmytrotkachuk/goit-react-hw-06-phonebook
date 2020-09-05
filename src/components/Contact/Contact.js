@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './Contact.module.css'
 import {connect} from 'react-redux'
-import contactsActions from '../redux/contacts/contactsActions'
-// import PropTypes from 'prop-types';
+import contactsActions from '../../redux/contacts/contactsActions'
+import PropTypes from 'prop-types';
 
 const Contact = ({name,number , onRemove}) => {
     
@@ -31,7 +31,8 @@ const mapDispatchToProps = (dispatch, ownProps) =>({
 export default connect(mapStateToProps,mapDispatchToProps)(Contact);
 
 
-// Contact.propTypes = {
-//     contact: PropTypes.shape(PropTypes.string.isRequired) ,
-//     onRemove: PropTypes.func
-// }
+Contact.propTypes = {
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    onRemove: PropTypes.func
+}

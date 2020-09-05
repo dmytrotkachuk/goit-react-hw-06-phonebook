@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './Appbar.module.css'
 import { CSSTransition} from 'react-transition-group'
-import transitions from './transitions.module.css'
-// import Notification from '../Notification/Notification'
+import transitions from '../transitions.module.css'
+
 
 const Appbar = () => (
     <header className={styles.header}>
