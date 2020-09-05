@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from './Contact.module.css'
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux'
+import contactsActions from '../redux/contacts/contactsActions'
+// import PropTypes from 'prop-types';
 
-const Contact = ({contact,onRemove}) => {
-
+const Contact = ({name,number , onRemove}) => {
+    
     return(
     <li className={styles.contact}>
-    <p className={styles.contactData}>{contact.name}</p>
-    <p className={styles.contactData}>{contact.number}</p>
+    <p className={styles.contactData}>{name}</p>
+    <p className={styles.contactData}>{number}</p>
     <button 
     className={styles.button} 
     onClick={onRemove}
@@ -16,10 +18,20 @@ const Contact = ({contact,onRemove}) => {
     
     )}
 
-export default Contact;
+const mapStateToProps = (state,ownProps) => {
+ const item = state.contacts.items.find(item => item.id === ownProps.id)
+ return {...item}
+};
 
 
-Contact.propTypes = {
-    contact: PropTypes.shape(PropTypes.string.isRequired) ,
-    onRemove: PropTypes.func
-}
+const mapDispatchToProps = (dispatch, ownProps) =>({
+    onRemove: () => dispatch(contactsActions.removeContact(ownProps.id))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Contact);
+
+
+// Contact.propTypes = {
+//     contact: PropTypes.shape(PropTypes.string.isRequired) ,
+//     onRemove: PropTypes.func
+// }

@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import contactsActions from '../redux/contacts/contactActions'
-import Contact from './Contact'
-import styles from './ContactList.module.css'
 import { v4 as uuidv4 } from 'uuid';
 import { CSSTransition , TransitionGroup} from 'react-transition-group'
+// import contactsActions from '../redux/contacts/contactsActions'
+import Contact from './Contact'
+import styles from './ContactList.module.css'
 import transitions from './transitions.module.css'
 
 const ContactList = ({contacts, onRemoveContact}) => {
@@ -18,9 +18,7 @@ const ContactList = ({contacts, onRemoveContact}) => {
         timeout={200}
         key={uuidv4()}> 
         
-        <Contact 
-        contact={contact} 
-        onRemove={()=> onRemoveContact(contact.id)}/>
+        <Contact id={contact.id}/>
        
     </CSSTransition> )}
     
@@ -35,9 +33,7 @@ const mapStateToProps = (state) =>{
     return ({ contacts: visibleContacts })
 }
 
-const mapDispatchToProps = {
-    onRemoveContact: contactsActions.removeContact
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+
+export default connect(mapStateToProps)(ContactList);
 

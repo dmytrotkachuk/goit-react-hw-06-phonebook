@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import contactsAction from '../redux/contacts/contactActions'
+import contactsAction from '../redux/contacts/contactsActions'
 import styles from './ContactForm.module.css'
 
 class ContactForm extends Component{
@@ -19,8 +19,10 @@ class ContactForm extends Component{
     handleSubmit = e => {
         e.preventDefault()
         const {name,number} = this.state
+        if (name && number){
         this.props.onAddContact(name,number)
         this.setState({name:'', number:''})
+        } 
     }
 
     render(){
